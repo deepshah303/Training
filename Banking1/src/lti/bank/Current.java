@@ -8,19 +8,21 @@ public class Current extends Account {
 
 	public Current(String holder) {
 		super(holder, INIT_CUR_BAL);
-		currtxns[cidx++] = new CurrentTransaction("OB", balance, balance,overdraft);
+		
+		// Adding opening account transaction
+		txns[idx++] = new CurrentTransaction("Cr", balance, balance, overdraft);
 	}
 
-	public void withdraw(double amount) {
+	public void withdraw(double amount) throws BalanceException {
 		if (amount <= (balance + overdraft)) {
 			balance -= amount;
 			if (balance < 0) {
 				overdraft += balance;
 				balance = 0;
 			}
-			currtxns[cidx++] = new CurrentTransaction("Dr", amount, balance, overdraft);
+			txns[idx++] = new CurrentTransaction("Dr", amount, balance, overdraft);
 		} else {
-			System.out.println("Insufficient funds!");
+			throw new BalanceException("Insufficient funds!");
 		}
 	}
 
@@ -31,7 +33,7 @@ public class Current extends Account {
 			balance += overdraft - OVERDRAFT_AMT;
 			overdraft = OVERDRAFT_AMT;
 		}
-		currtxns[cidx++] = new CurrentTransaction("Cr", amount, balance, overdraft);
+		txns[idx++] = new CurrentTransaction("Cr", amount, balance, overdraft);
 	}
 
 	@Override
@@ -42,8 +44,8 @@ public class Current extends Account {
 	@Override
 	public void statement() {
 		System.out.println("Statement of A/C: " );
-		for (int i = 0; i < cidx; i++) {
-			System.out.println(currtxns[i]);
+		for (int i = 0; i < idx; i++) {
+			System.out.println(txns[i]);
 		}
 	
 	}

@@ -6,15 +6,18 @@ public class Savings extends Account {
 
 	public Savings(String holder) {
 		super(holder, MIN_SAV_BAL);
+		
+		// Adding opening account transaction
+		txns[idx++] = new Transaction("OB", balance, balance);
 	}
 
-	public void withdraw(double amount) {
+	public void withdraw(double amount) throws BalanceException {
 		if (amount <= (balance - MIN_SAV_BAL)) {
 			balance -= amount;
 			txns[idx++] = new Transaction("Dr", amount, balance);	
 		}
 		else
-			System.out.println("Insufficient funds!");
+			throw new BalanceException("Insufficient funds!");
 	}
 
 	@Override

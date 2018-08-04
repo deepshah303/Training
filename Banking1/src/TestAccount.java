@@ -1,3 +1,6 @@
+import lti.bank.AccountFactory;
+import lti.bank.BalanceException;
+import lti.bank.Bank;
 import lti.bank.Current;
 
 public class TestAccount {
@@ -10,9 +13,15 @@ public class TestAccount {
 //
 //		sav.deposit(2000);
 //		sav.deposit(4000);
-//		sav.withdraw(3000);
+//		try {
+//			sav.withdraw(7000);
+//		} catch (BalanceException e) {
+//			//e.printStackTrace();  //for developers to trouble shoot
+//			//System.out.println(e);  //for logging purpose to audit
+//			System.out.println(e.getMessage());  // for end users
+//		}
 //		sav.withdraw(7000);
-//		
+		
 //		sav.statement();
 
 //		cc.withdraw(4000);
@@ -35,9 +44,24 @@ public class TestAccount {
 		
 		curr.deposit(2000);
 		curr.deposit(4000);
-		curr.withdraw(3000);
-		curr.withdraw(7000);
-		curr.withdraw(2000);
+		try {
+			curr.withdraw(3000);
+		} catch (BalanceException e) {
+//			e.printStackTrace();
+			System.out.println(e);
+		}
+		try {
+			curr.withdraw(7000);
+		} catch (BalanceException e) {
+//			e.printStackTrace();
+			System.out.println(e);
+		}
+		try {
+			curr.withdraw(2000);
+		} catch (BalanceException e) {
+//			e.printStackTrace();
+			System.out.println(e);
+		}
 		curr.statement();
 		
 	}

@@ -6,6 +6,7 @@ package lti.bank;
  * @author Deep Shah
  * @version1.0
  */
+
 public abstract class Account implements Bank {
 	private int accNo;
 	private String holder;
@@ -28,9 +29,6 @@ public abstract class Account implements Bank {
 		this.balance = balance;
 		// Instantiating transaction array for the account
 		txns = new Transaction[10];
-		currtxns = new CurrentTransaction[10];
-		// Adding opening account transaction
-		txns[idx++] = new Transaction("OB", balance, balance);
 	}
 
 	public void summary() {
@@ -48,7 +46,7 @@ public abstract class Account implements Bank {
 		txns[idx++] = new Transaction("Credit", amount, balance);
 	}
 
-	public abstract void withdraw(double amount);
+	public abstract void withdraw(double amount) throws BalanceException;
 
 	// public void withdraw(double amount) {
 	// if (amount <= balance) {
