@@ -7,16 +7,32 @@
 <title>Home page</title>
 </head>
 <body>
-	<form>
-		<label for="username">Username:</label> 
-		<input type="text" id="username" name="username"> 
-		<label for="password">Password:</label>
-		<input type="password" id="password" name="password">
-		<div id="lower"><br>
-			<a>New User ? Register!</a><br>
-			<input type="submit" value="Login">
-		</div>
-		<!--/ lower-->
+
+	<form action = "User.hola">
+		<fieldset style="border: 1px solid">
+			<legend>
+				<h4>Sign In</h4>
+			</legend>
+			<table>
+				<tr>
+					<td><label for="email">Username/Email:</label></td>
+					<td><input type="text" id="email" name="email"
+						pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,3}$"
+						required></td>
+				</tr>
+				<tr>
+					<td><label for="password">Password:</label></td>
+					<td><input type="password" id="password" name="password"
+						pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,16}" required></td>
+				</tr>
+			</table>
+			<div id="lower">
+				<br> <a href="forget.jsp">Forget password?</a> <br> <br>
+				<input type="submit" value="Login">
+			</div>
+			<br> <a href="register.jsp">New user?Register</a>
+			<!--/ lower-->
+		</fieldset>
 	</form>
 </body>
 </html>
