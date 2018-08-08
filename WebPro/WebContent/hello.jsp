@@ -7,12 +7,22 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
 </head>
-<body>
-	<h1>Hello Beautiful World!</h1>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<body bgcolor="wheat" text="spinach">
+
+<fmt:setLocale value="${param.loc}"/>
+<fmt:setBundle basename="labels"/>
+
+	<h1><fmt:message key="greeting"/></h1>
 	<hr>
-	<h2>Welcome to Java Server pages</h2>
-	<h3>Visit Time: <%= new Date() %></h3>
+	<h2><fmt:message key="message"/></h2>
+	<h3><fmt:message key="time"/> <%= new Date() %></h3>
 	<%! int counter = 1001; %>
-	<h3>Visitor No: <%= counter++ %></h3>
+	<h3><fmt:message key="count"/> <%= counter++ %></h3>
+	
+	<hr>
+	<a href="hello.jsp?loc=en">English</a> |
+	<a href="hello.jsp?loc=hi">Hindi</a> |
+	<a href="hello.jsp?loc=fr">French</a> |
 </body>
 </html>
