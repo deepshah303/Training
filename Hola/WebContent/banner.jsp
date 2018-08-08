@@ -1,5 +1,6 @@
+<%@page import="lti.hola.bean.RegisterBean"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,8 +8,22 @@
 <title>Insert title here</title>
 </head>
 <body>
- <h1 align="center"> Hola - Community of experts</h1>
- <h4>Hello visitor</h4>
- <hr size="3" color="midnightblue" >
+	<h1 align="center">Hola - Community of experts</h1>
+	<%
+		RegisterBean user = (RegisterBean) session.getAttribute("User");
+		if (user != null) {
+	%>
+	<h4>
+		Hello <%=user.getName()%>
+		| <a href="User.hola?Logout=yes">Logout</a>
+	</h4>
+	<%
+		} else {
+	%>
+	<h4>Hello visitor</h4>
+	<%
+		}
+	%>
+	<hr size="3" color="midnightblue">
 </body>
 </html>

@@ -7,6 +7,14 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<jsp:include page="banner.jsp" />
+	<%
+		if (request.getParameter("invalid") != null) {
+	%>
+	<font size="3" color="Red">Invalid Email ID / Movie</font>
+	<%
+		}
+	%>
 	<form action="User.hola">
 		<table>
 			<tr>
@@ -24,5 +32,6 @@
 		<br>
 		<button type="submit">Submit</button>
 	</form>
+	<%@include file="footer.html"%>
 </body>
 </html>

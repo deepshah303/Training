@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<jsp:include page="banner.jsp" />
 	<form action="User.hola">
 		<table>
 			<tr>
@@ -23,5 +24,6 @@
 		</table>
 		<button type="submit">Submit</button>
 	</form>
+	<%@include file="footer.html"%>
 </body>
 </html>

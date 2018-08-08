@@ -7,8 +7,16 @@
 <title>Home page</title>
 </head>
 <body>
+	<jsp:include page="banner.jsp" />
 
-	<form action = "User.hola">
+	<%
+		if (request.getParameter("invalid") != null) {
+	%>
+	<font size="3" color="Red">Invalid Email ID / Password</font>
+	<%
+		}
+	%>
+	<form action="User.hola">
 		<fieldset style="border: 1px solid">
 			<legend>
 				<h4>Sign In</h4>
@@ -34,5 +42,6 @@
 			<!--/ lower-->
 		</fieldset>
 	</form>
+	<%@include file="footer.html"%>
 </body>
 </html>
